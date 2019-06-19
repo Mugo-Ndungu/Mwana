@@ -57,7 +57,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mwana.wsgi.application'
+WSGI_APPLICATION = 'mtoto.wsgi.application'
 
 
 # Database
