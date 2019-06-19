@@ -18,7 +18,8 @@ urlpatterns = [
     url(r'^new/',views.new_post,name='new_post'),
     url(r'^emergency/',views.emergency,name='emergency' ),
     url(r'^about/',views.about,name='about'),
-
+    url(r'^api/posts/$',views.PostList.as_view()),
+    url(r'^api/profile/$',views.ProfileList.as_view()),
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
