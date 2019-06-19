@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from .permissions import IsAdminOrReadOnly
 from .models import Posts, Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -99,6 +100,7 @@ def fourteentosixteen(request,tag):
     
 
 class PostList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
     def get(self,request, format=None):
         all_posts = Posts.objects.all()
         serializers =PostSerializer(all_posts,many=True)
@@ -110,9 +112,10 @@ class PostList(APIView):
         if serializers.is_valid():
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
-            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ProfileList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
     def get(self,request,format=None):
         all_profiles = Profile.objects.all()
         serializers = ProfileSerializer(all_profiles,many=True)
@@ -124,5 +127,5 @@ class ProfileList(APIView):
         if serializers.is_valid():
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
-            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
