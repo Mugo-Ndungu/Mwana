@@ -150,10 +150,10 @@ class PostDescription(APIView):
             serializers.save()
             return Response(serializers.data)
         else:
-            return Response(serializers.errors, status = staus.HTTP_400_BAD_REQUEST)
+            return Response(serializers.errors, status = status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        post = self.get_merch(pk)
+        post = self.get_post(pk)
         post.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 

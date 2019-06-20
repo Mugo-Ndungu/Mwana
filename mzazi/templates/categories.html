@@ -1,63 +1,113 @@
-{%extends 'base.html'%}
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
 <head>
   <meta charset="utf-8">
-  <title>Mwana</title>
-  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mwana-Categories of interest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap" rel="stylesheet">
+
+  <script src="main.js"></script>
 </head>
 <body>
   <div class="container">
-    <div class="jumbotron">
-      <h1>Please select your areas of interest</h1>
-      <h1>We'll use this to show you only what you are interested in.</h1>
+    <h3>Please select your areas of interest </h3>
+
+    <div class="btn-group" data-toggle="buttons" style="font-family: 'Playfair Display', serif;">
+      <div class="row">
+        <div class="col-sm-3">
+          <a href="{% url 'zerototwo' %}">
+      <ul style="margin:20px;">
+      <label class="btn btn-yellow" style="height:110px; width:210px; color:black; font-size:40px; font-weight: 600; opacity:0.7; background-image: url(https://images.pexels.com/photos/1442005/pexels-photo-1442005.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=250)">
+        <input type="checkbox" autocomplete="off" style="display:none;">0-2
+      </label>
+      </ul>
+    </a>
     </div>
-    
-    
-      <form>
-        <div class="well">
-            <div class="row">
-              <div class="col-md-6">
-               <label>please select an age category</label> <br>
-            <input type="checkbox" name="definition" value="0">0-2 <br>
-            <input type="checkbox" name="definition" value="0">2-4 <br>
-            <input type="checkbox" name="definition" value="10">4-6 <br>
-            <input type="checkbox" name="definition" value="0">6-8 <br>
-            <input type="checkbox" name="definition" value="0">8-10 <br>
-            <input type="checkbox" name="definition" value="0">10-12 <br>
-            <input type="checkbox" name="definition" value="10">12-14 <br>
-            <input type="checkbox" name="definition" value="0">14-16 <br>
-            <label>
-            </div>
-<div class="col-md-6">
+    <div class="col-sm-3">
+      <a href="{% url 'twotofour' %}">
+      <ul  style="margin:20px;">
+      <label class="btn btn-info" style="height:110px; width: 210px; color:black; font-size:40px; font-weight: 600; opacity:0.7; background-image: url(https://images.pexels.com/photos/1445465/pexels-photo-1445465.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=200)">
+        <input type="checkbox" autocomplete="off" style="display:none;">2-4
+      </label>
+      </ul>
+    </a>
+    </div>
+    <div class="col-sm-3">
+      <a href="{% url 'fourtosix' %}">
+      <ul style="margin:20px;">
+      <label class="btn btn-pink" style="height:110px; width:210px; color: black; opacity: 0.7; font-size:40px;  background-image:url(https://images.pexels.com/photos/163209/baseball-player-running-sport-163209.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=220);">
+        <input type="checkbox" autocomplete="off" style="display:none;">4-6
+      </label>
+    </ul>
+  </a>
+  </div>
+  <div class="col-md-3">
+    <a href="{% url 'sixtoeight' %}">
+    <ul style="margin:20px;">
+      <label class="btn btn-yellow" style="height:110px; width:210px; color: black; opacity: 0.7; font-size:40px; font-weight: 600;  background-image:url(https://images.pexels.com/photos/1425883/pexels-photo-1425883.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=220)">
+        <input type="checkbox" autocomplete="off" style="display:none;">6-8
+      </label>
+    </ul>
+  </a>
+  </div>
+  <div class="col-sm-3">
+    <a href="{% url 'eighttoten' %}">
+    <ul style="margin:20px;">
+      <label class="btn btn-info" style="height:110px; width:210px; color: black; opacity: 0.7; font-size:30px; font-weight: 600; background-image: url(https://images.pexels.com/photos/936036/pexels-photo-936036.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=210)">
+        <input type="checkbox" autocomplete="off" style="display:none;">8-10
+      </label>
+    </ul>
+  </a>
+  </div>
+  <div class="col-sm-3">
+    <a href="{%url 'tentotwelve'%}">
+    <ul style="margin:20px;">
+      <label class="btn btn-pink" style="height:110px; width:210px; color:black; opacity: 0.7; font-size: 32px; background-image: url(https://images.pexels.com/photos/936058/pexels-photo-936058.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=210)">
+        <input type="checkbox" autocomplete="off" style="display:none;">10-12
+      </label>
+    </ul>
+  </a>
+  </div>
+  <div class="col-sm-3"><a href="{%url 'twelvetofourteen' %}">
+    <ul style="margin:20px;">
+      <label class="btn btn-yellow" style="height:110px; width:210px; color:black; opacity: 0.7; font-size: 32px; background-image: url(https://images.pexels.com/photos/935990/pexels-photo-935990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=210)">
+        <input type="checkbox" autocomplete="off" style="display:none;">12-14
+      </label>
+    </ul>
+  </a>
+  </div>
+  <div class="col-sm-3">
+    <a href="{% url 'fourteentosixteen' %}">
+    <ul style="margin:20px;">
+      <label class="btn btn-info" style="height:110px; width:210px; color:black; opacity: 0.7; font-size: 32px; background-image: url(https://images.pexels.com/photos/1013328/pexels-photo-1013328.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=210)">
+        <input type="checkbox" autocomplete="off" style="display:none;">14-16
+      </label>
+    </ul>
+  </a>
+  </div>
+    </div>
+  </div>
+    <div class="row">
             
-        </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-           
-            </div>
-          <div class="col-md-6">
-           
-          </div>
-</div>
-        <div class="row">
-            
-            <button id="submit1" type="submit" class="btn" onclick="" name="button"> submit</button>
-          </div>
+      <button type="submit" class="btn" name="button" style="background-color:#f3b61f; border-radius: 16px;"> submit</button>
+    </div>
 
-           
-            </div>
-
-
-      </form>
-
-
-
-</body>
-
-           
-            </div>
-      </form>
+  </div>
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
 </body>
 </html>
