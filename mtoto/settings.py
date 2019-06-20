@@ -19,7 +19,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'mzazi',
+
     'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -58,7 +58,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mwana.wsgi.application'
+WSGI_APPLICATION = 'mtoto.wsgi.application'
 
 
 # Database

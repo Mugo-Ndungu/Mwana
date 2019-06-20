@@ -1,5 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{block.super}}
+
 <!DOCTYPE html>
 <html>
+<style>
+    body {
+        background-color: #ffffff;
+
+    }
+</style>
 
 <head>
     <title></title>
@@ -7,30 +18,109 @@
 </head>
 
 <body>
-    <p>Below are some contacts that you can use incase of an emergency. They will guide you through first aid and the
-        next steps to take</p>
-    <ul>
-        <li>AAR Emergency Ambulance in Kenya -2717374</li>
+        <hr style=" border-top: 10px dotted  #9cede3; margin-left: 10px;">
+
+    <div class="container">
+            <br>
+            <br>
+            <br>
+        <h4>Below are some contacts to emergency helplines and information about 24hr emergncy centers around Nairobi that you can contact. They will guide you through first aid andthe next steps to take.</h4>
+            <br>
+            <br>
+            <br>
+
+        <ul style="list-style-type: none;">
+            <span style="float:none">
+                    <button type="button" style="background-color:#9cede3;
+                    border: none;
+                    color: black;
+                    padding: 10px 20px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    margin: 4px 2px;
+                    cursor: pointer;
+                    border-radius: 16px;"><a style="color: black"
+                href="http://hospitals.aku.edu/nairobi/Departments/Pages/emergency.aspx" target="_blank">Aga Khan</a></button>
+
+        <button type="button" style="background-color:#9cede3;
+                 border: none;
+                 color: black;
+                 padding: 10px 20px;
+                 text-align: center;
+                 text-decoration: none;
+                 display: inline-block;
+                 margin: 4px 2px;
+                 cursor: pointer;
+                 border-radius: 16px;"><a style="color: black"
+                href="https://mpshahhosp.org/casualty-ae/" target="_blank">M.P Shah</a></button>
+
+        <button type="button" style="background-color:#9cede3;
+              border: none;
+              color: black;
+              padding: 10px 20px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              margin: 4px 2px;
+              cursor: pointer;
+              border-radius: 16px;"><a  style="color: black" href="https://nwh.co.ke/hospital/departments/casualty/" target="_blank">Nairobi womens</a></button>
+
+        <button type="button" style="background-color:#9cede3;
+                    border: none;
+                    color: black;
+                    padding: 10px 20px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    margin: 4px 2px;
+                    cursor: pointer;
+                    border-radius: 16px;"><a style="color: black"
+                href="https://www.gerties.org/services/accident-emergency/" target="_blank">Gertrudes hospital</a></button>
+
+            </span>
+            <br>
+            <br>
+            <br>
+            
+            <div class="row">
+                <div class="col-md-3">
+                    <li>AAR Emergency Ambulance in Kenya:  2717374</li>
+
+                    <li> Avenue Rescue Services in Kenya:  3743858</li>
+
+                    <li> Kenya Red Cross Society Ambulance in Kenya: (020)3950000</li>
+                </div>
+                <div class="col-md-3">
+                    <li> Emergency Plus Medical Services in Kenya: 070039539</li>
+
+                    <li> Phoenix Aviation Limited Ambulance Service in Kenya: 6005837</li>
+
+                    <li>Intensive Care Air Ambulance Limited in Kenya: 6004945</li>
+                </div>
+
+                <div class="col-md-3">
+                    <li>Road Safety Network Ambulance Service in Kenya: 2212699</li>
+
+                    <li>St John Ambulance in Kenya: 2210000</li>
+
+                    <li> Ambulance in Kenya: 112/999</li>
+
+                    <li>AMREF Flying Doctors Ambulance Service in Kenya: 315454/5 </li>
+                </div>
+
+            </div>
+
+            
 
 
-        <li> Avenue Rescue Services in Kenya - 3743858</li>
 
-        <li> Kenya Red Cross Society Ambulance in Kenya - (020)3950000</li>
 
-        <li> Emergency Plus Medical Services in Kenya - 070039539</li>
 
-        <li> Phoenix Aviation Limited Ambulance Service in Kenya -6005837</li>
 
-        <li>Intensive Care Air Ambulance Limited in Kenya - 6004945</li>
-
-        <li>Road Safety Network Ambulance Service in Kenya -2212699</li>
-
-        <li>St John Ambulance in Kenya -2210000</li>
-
-        <li> Ambulance in Kenya - 112/999</li>
-
-        <li>AMREF Flying Doctors Ambulance Service in Kenya -315454/5 </li>
-    </ul>
+        </ul>
+        {% endblock %}
+    </div>
 
 </body>
 

@@ -50,7 +50,7 @@ class Posts(models.Model):
     image=models.ImageField(upload_to = 'posts/', default = 'article.png')
     title = models.CharField(max_length=200)
     content = models.TextField()
-    published = models.DateTimeField()
+    published = models.DateTimeField(auto_now_add=True)
     tag = models.ManyToManyField(tag,blank=True)
 
 

@@ -7,14 +7,13 @@
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" src="https://images.pexels.com/photos/277253/pexels-photo-277253.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=650&w=600"  alt="First slide" height="500vh">
+                <img class="d-block w-100" src="https://images.pexels.com/photos/1588081/pexels-photo-1588081.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400"  alt="First slide" height="500vh">
                   <div class="carousel-caption">
                     <h1 style="height:420px;font-weight:bolder;font-family: 'Anton', sans-serif;line-height:20px;letter-spacing:3px;font-size:48px;"></h1>
-                    <!-- <a href="#home" class="btn btn-pink pull-left text-center">View Neighbourhoods</a> -->
                   </div>
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="https://images.pexels.com/photos/1327215/pexels-photo-1327215.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500"
+                <img class="d-block w-100" src="https://images.pexels.com/photos/1102570/pexels-photo-1102570.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400"
                   alt="Second slide" height="500vh">
                   <div class="carousel-caption">
                     <h1 style="height:300px;font-weight:bolder;font-family: 'Anton', sans-serif;line-height:20px;letter-spacing:3px;font-size:48px;"></h1>
@@ -22,7 +21,7 @@
                     </div>
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="https://images.pexels.com/photos/541216/pexels-photo-541216.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500"
+                <img class="d-block w-100" src="https://images.pexels.com/photos/1027931/pexels-photo-1027931.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=840"
                   alt="Third slide" height="500vh">
                   <div class="carousel-caption">
                     <h1 style="height:300px;font-weight:bolder;font-family: 'Anton', sans-serif;line-height:20px;letter-spacing:3px;font-size:48px;"></h1>
@@ -49,17 +48,19 @@
         <div class="panel panel-default">
   
           <div class="panel-heading">
-  
+          <form action="/accounts/register/" method="POST"> 
               {% csrf_token %}
               {% bootstrap_form form layout="inline" %}
               <div class="form-group">
                 <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+                <input type="next" name="next" id="" hidden value="{{ '/' }}">
               </div>
   
-              <input type="hidden" name="next" value="{{next}}">
-  
-            </form>
-  
+         <P>Already have an account?
+
+          <a href="/accounts/login">SignIn</a>
+
+         </p>
           </div>
   
         </div>

@@ -2,9 +2,28 @@ from django.shortcuts import render,redirect
 from .models import Posts, Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from .forms import NewPostForm
+
+@login_required(login_url='/accounts/login/')
+def home(request):
+
+    posts=Posts.objects.all()
+    context = {
+        "posts":posts,
+    }
+
+    return render(request,'home.html',context)
+
 def posts(request):
     posts = Posts.objects.all()
     return render(request,'home.html',{"posts":posts})
+
+@login_required(login_url = '/accounts/login/')
+def single_post(request,id):
+    posts = Posts.objects.get(id=id)
+    return render(request,'singlepost.html',{"posts":posts})
+
+   
 
     
 @login_required(login_url = '/accounts/login/')
@@ -34,7 +53,7 @@ def new_post(request):
             posts = form.save(commit=False)
             posts.profile = current_user
             posts.save()
-        return redirect('posts')
+        return redirect('home')
     else:
         form = NewPostForm()
     return render(request,'new_post.html',{"form":form})

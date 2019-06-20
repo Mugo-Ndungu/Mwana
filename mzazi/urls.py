@@ -4,7 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url('^$',views.posts,name='posts'),
+    url('^$',views.home,name='home'),
+    # url('^$',views.posts,name='posts'),
     url(r'^profile/(?P<username>\w+)',views.profile,name='profile'),
     url(r'^zerototwo/',views.zerototwo, name='zerototwo'),
     url(r'^twotofour/',views.twotofour,name='twotofour'),
@@ -14,10 +15,12 @@ urlpatterns = [
     url(r'^tentotwelve/',views.tentotwelve,name='tentotwelve'),
     url(r'^twelvetofourteen/',views.twelvetofourteen,name='twelvetofourteen'),
     url(r'fourteentosixteen/',views.fourteentosixteen,name='fourteentosixteen'),
-    url(r'^update_profile',views.update_profile,name='update_profile'),
+    url(r'^update_profile/',views.update_profile,name='update_profile'),
     url(r'^new/',views.new_post,name='new_post'),
     url(r'^emergency/',views.emergency,name='emergency' ),
     url(r'^about/',views.about,name='about'),
+    url(r'^posts/(\d+)',views.single_post,name='single'),
+    url(r'^new/',views.new_post,name='new_post'),
 
 ]
 if settings.DEBUG:
