@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from .permissions import IsAdminOrReadOnly
 from .models import Posts, Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -13,6 +14,10 @@ def home(request):
     }
 
     return render(request,'home.html',context)
+from rest_framework.response import Response
+from .serializer import PostSerializer,ProfileSerializer
+from rest_framework.views import APIView
+from rest_framework import status
 
 def posts(request):
     posts = Posts.objects.all()
@@ -112,7 +117,88 @@ def fourteentosixteen(request,tag):
     return render(request, '14_16.html',{"fourteentosixteen":fourteentosixteen},{"posts":posts})
     
 
-    
+class PostList(APIView):
+    def get(self,request, format=None):
+        all_posts = Posts.objects.all()
+        serializers =PostSerializer(all_posts,many=True)
+        return Response(serializers.data)
 
-    
-    
+    def post(self,request, format=None):
+        serializers = PostSerializer(data = request.data)
+
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    permission_classes = (IsAdminOrReadOnly,)
+
+
+class ProfileList(APIView):
+    def get(self,request,format=None):
+        all_profiles = Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles,many=True)
+        return Response(serializers.data)
+
+    def post(self,request, format=None):
+        serializers = ProfileSerializer(data = request.data)
+
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    permission_classes = (IsAdminOrReadOnly,)
+
+
+class PostDescription(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get_post(self,pk):
+        try:
+            return Posts.objects.get(pk=pk)
+        except Posts.DoesNotExist:
+            return Http404
+    def get(self,request,pk,format = None):
+        post = self.get_post(pk)
+        serializers = PostSerializer(post)
+        return Response(serializers.data)
+
+    def put(self,request,pk,format = None):
+        post = self.get_post(pk)
+        serializers = PostSerializer(post, request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data)
+        else:
+            return Response(serializers.errors, status = status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        post = self.get_post(pk)
+        post.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class ProfileDescription(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get_profile(self,pk):
+        try:
+            return Profile.objects.get(pk=pk)
+        except Profile.DoesNotExist:
+            return Http404
+
+    def get(self,request,pk,format = None):
+        profile = self.get_profile(pk)
+        serializers = ProfileSerializer(profile)
+        return Response(serializers.data)
+
+    def put(self,request,pk,format = None):
+        profile = self.get_profile(pk)
+        serializers = ProfileSerializer(profile,request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data)
+        else:
+            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def delete(self, request, pk, format=None):
+        profile = self.get_profile(pk)
+        profile.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

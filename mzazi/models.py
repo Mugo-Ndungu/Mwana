@@ -16,7 +16,6 @@ class Profile(models.Model):
     username = models.CharField(max_length=50)
     email = models.EmailField(blank=True)
     picture = models.ImageField(upload_to = 'profiles/', default = 'default.png' )
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.CharField(max_length = 200, blank = True)
     
 
@@ -61,3 +60,6 @@ class Posts(models.Model):
     def get_profile_posts(cls,profile):
         posts = Posts.objects.filter(profile__pk=profile)
         return posts
+
+    def __str__(self):
+        return self.title

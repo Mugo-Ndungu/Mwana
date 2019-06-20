@@ -21,7 +21,10 @@ urlpatterns = [
     url(r'^about/',views.about,name='about'),
     url(r'^posts/(\d+)',views.single_post,name='single'),
     url(r'^new/',views.new_post,name='new_post'),
-
+    url(r'^api/posts/$',views.PostList.as_view()),
+    url(r'^api/profile/$',views.ProfileList.as_view()),
+    url(r'api/posts/post-id/(?P<pk>[0-9]+)/$', views.PostDescription.as_view()),
+    url(r'api/profile/profile-id/(?P<pk>[0-9]+)/$', views.ProfileDescription.as_view()),
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
