@@ -7,7 +7,7 @@ from .forms import NewPostForm
 from django.utils.safestring import mark_safe
 import json
 
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def home(request):
 
     posts=Posts.objects.all()
@@ -25,7 +25,7 @@ def posts(request):
     posts = Posts.objects.all()
     return render(request,'home.html',{"posts":posts})
 
-@login_required(login_url = '/accounts/login/')
+# @login_required(login_url = '/accounts/login/')
 def single_post(request,id):
     posts = Posts.objects.get(id=id)
     return render(request,'singlepost.html',{"posts":posts})
@@ -33,7 +33,7 @@ def single_post(request,id):
    
 
     
-@login_required(login_url = '/accounts/login/')
+# @login_required(login_url = '/accounts/login/')
 def profile(request,username):
     profile = User.objects.get(username=username)
     try:
@@ -51,7 +51,7 @@ def profile(request,username):
 
     return render(request, 'profile.html',context)
 
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user = request.user
     if request.method == 'POST':
@@ -72,7 +72,7 @@ def about(request):
     return render(request,'about.html')
 
 
-@login_required(login_url = '/accounts/login/')
+# @login_required(login_url = '/accounts/login/')
 def update_profile(request,username):
     profile = User.objects.get(username = username)
     return render(request,'updateprofile.html',{"profile":profile})
