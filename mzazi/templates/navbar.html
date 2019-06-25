@@ -37,12 +37,13 @@
 
  <nav>
    <ul>
-     <li> <a href="{%url 'home' %}" style="color: black" >Mwana</a> </li>
-     <li> <a href="{%url 'emergency' %}" style="color: black">Emergency Contacts</a> </li>
+     <li> <a href="{%url 'home' %}" style="color: black;"> Mwana</a> </li>
+     <li> <a href="{%url 'emergency' %}" style="color: black;">Emergency Contacts</a> </li>
      <li> <a href="/chat" style="color: black">Request Chat</a> </li>
-     <li> <a href="{%url 'about'%}" style="color: black">About Us</a> </li>
+     <!-- <li> <a href="{%url 'about'%}" style="color: black">About Us</a> </li> -->
      <li> <a href="/logout" style="color: black">LogOut</a> </li>
-     <li > <a href="{%url 'profile' username=user %}" style="color: #dd7373; float:right;">{{user.username}}</a> </li>
+    
+     <li class="pull-right" > <a href="{%url 'profile' username=user %}" style="color: #dd7373; float:right;">{{user.username| title }}</a> </li>
    </ul>
  </nav>
 

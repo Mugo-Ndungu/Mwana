@@ -4,6 +4,8 @@ from .models import Posts, Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import NewPostForm
+from django.utils.safestring import mark_safe
+import json
 
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -115,6 +117,16 @@ def fourteentosixteen(request,tag):
     fourteentosixteen = Posts.objects.get(tag='14-16')
     posts = Posts.get_fourteentosixteen_posts(tag)
     return render(request, '14_16.html',{"fourteentosixteen":fourteentosixteen},{"posts":posts})
+
+# def chat(request):
+#     return render(request, 'chat.html', {})
+
+
+# def room(request, room_name):
+    
+#     return render(request, 'room.html', {
+#         'room_name_json': mark_safe(json.dumps(room_name))
+#     })
     
 
 class PostList(APIView):
@@ -202,3 +214,8 @@ class ProfileDescription(APIView):
         profile = self.get_profile(pk)
         profile.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+

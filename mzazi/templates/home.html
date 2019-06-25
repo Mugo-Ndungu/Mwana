@@ -25,14 +25,15 @@
                     <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap" height="200" width="100%">
              <!-- Card content -->
                          <div class="card-body">
-                             <h4 class="card-title text-center">{{post.title}}</h4>
-                             <p class="card-text">{{post.content|truncatechars:50}}</p>
+                             <h4 class="card-title text-center" style="font-family: 'Mali', cursive;
+                             ">{{post.title}}</h4>
+                             <p class="card-text" style="font-family: 'Nunito', sans-serif;">{{post.content|truncatechars:50}}</p>
                              <a href="{% url 'single' post.pk %}">continue reading</a>
                             <!-- Title -->
                         </div>
                     <div class="card-footer">
                         <p class="pull-right clearfix">{{post.published | date:"F d,Y"}}</p>
-                        <p class="pull-left">{{post.tag}}</p>
+                        <!-- <p class="pull-left">{{post.tag}}</p> -->
                     </div>
                     </div>
                     <br>

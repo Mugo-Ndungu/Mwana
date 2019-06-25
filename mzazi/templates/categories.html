@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{block.super}}
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +21,13 @@
   <script src="main.js"></script>
 </head>
 <body>
+
+    <hr style=" border-top: 10px dotted  #9cede3; margin-left: 10px; margin-top: 15px;">
+    
+    <br>
+    <br>
+    <br>
+
   <div class="container">
     <h3>Please select your areas of interest </h3>
 
@@ -111,3 +122,4 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
 </body>
 </html>
+{% endblock %}

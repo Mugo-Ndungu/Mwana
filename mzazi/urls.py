@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url('^$',views.home,name='home'),
-    # url('^$',views.posts,name='posts'),
+    # url(r'^chat/', views.chat, name='chat'),
+    # url(r'^(?P<room_name>[^/]+)/$', views.room, name='room'),
     url(r'^profile/(?P<username>\w+)',views.profile,name='profile'),
     url(r'^zerototwo/',views.zerototwo, name='zerototwo'),
     url(r'^twotofour/',views.twotofour,name='twotofour'),
@@ -28,3 +29,5 @@ urlpatterns = [
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+
+
