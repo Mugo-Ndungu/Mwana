@@ -107,6 +107,7 @@ DATABASES = {
         'NAME': 'mtoto',
         'USER': 'tashanah',
         'PASSWORD': 'tash1234',
+        'PORT':'5433',
        }
 }
 
