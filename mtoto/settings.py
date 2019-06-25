@@ -71,6 +71,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+    'rest_framework',
+    'rest_framework.authtoken',
     
 ]
 
@@ -169,3 +171,9 @@ CHANNEL_LAYERS = {
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+
+REST_FRAMEWORK={
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
