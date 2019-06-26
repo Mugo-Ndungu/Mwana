@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{block.super}}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+</head>
+<body>
+    <div class="container">
+            <hr style=" border-top: 10px dotted  #9cede3; margin-left: 10px; margin-top: 15px;">
+    
+            <br>
+            <br>
+            <br>
+        <p> Please select  chat rooms would you like to join? </p> <br/>
+        <input id="room-name-input" type="text" size="100"/><br/>
+        <input id="room-name-submit" type="button" value="Enter"/>
+    
+        <script>
+            document.querySelector('#room-name-input').focus();
+            document.querySelector('#room-name-input').onkeyup = function(e) {
+                if (e.keyCode === 13) {  // enter, return
+                    document.querySelector('#room-name-submit').click();
+                }
+            };
+    
+            document.querySelector('#room-name-submit').onclick = function(e) {
+                var roomName = document.querySelector('#room-name-input').value;
+                window.location.pathname = '/chat/' + roomName + '/';
+            };
+        </script>
+    </body>
+    </div>
+       
+</html>
+
+{% endblock %}

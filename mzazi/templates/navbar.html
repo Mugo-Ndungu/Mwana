@@ -1,16 +1,35 @@
-<ul class="nav md-pills nav-justified">
-    <li class="nav-item">
-      <a class="nav-link active" href="{%url 'profile' username=user %}">profile</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{%url 'emergency' %}">Emergency contacts</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/chat">Request Chat</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{%url 'about'%}">About us</a>
-    </li>
-  </ul>
-  <a href="/logout" class="btn btn-warning">Logout</a>
+
+
+ <nav>
+    <ul>
+      <li> <a href="{%url 'home' %}" style="color: black;"> Mwana</a> </li>
+      <li> <a href="{%url 'emergency' %}" style="color: black;">Emergency Contacts</a> </li>
+      <li> <a href="/chat" style="color: black">Request Chat</a> </li>
+      <!-- <li> <a href="{%url 'about'%}" style="color: black">About Us</a> </li> -->
+      <li> <a href="/logout" style="color: black">LogOut</a> </li>
+     
+      <li class="pull-right" > <a href="{%url 'profile' username=user %}" style="color: #dd7373; float:right;">{{user.username| title }}</a> </li>
+    </ul>
+  </nav>
+ 
+  <style>
+  nav{
+    text-align: center;
+    
+   
+  }
+  li{
+    display: inline-block;
+    padding:4px;
+    padding-bottom: -2px;
+   color: #dd7373;
+    margin: 0;
+   
+             
+  }
+  ul{
+   color: black;
+  }
   
+  </style>
+ 

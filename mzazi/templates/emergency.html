@@ -1,5 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{block.super}}
+
 <!DOCTYPE html>
 <html>
+<style>
+    body {
+        background-color: #ffffff;
+
+    }
+</style>
 
 <head>
     <title></title>
@@ -7,30 +18,114 @@
 </head>
 
 <body>
-    <p>Below are some contacts that you can use incase of an emergency. They will guide you through first aid and the
-        next steps to take</p>
-    <ul>
-        <li>AAR Emergency Ambulance in Kenya -2717374</li>
+        <hr style=" border-top: 10px dotted  #9cede3; margin-left: 10px; margin-top: 15px;">
+    
+        <br>
+        <br>
+        <br>
+        
+    <div class="container">
+           
+        <h4>Below are some contacts to emergency helplines and information about 24hr emergncy centers around Nairobi that you can contact. They will guide you through first aid andthe next steps to take.</h4>
+            <br>
+            <br>
+            <br>
+
+        <ul style="list-style-type: none;">
+            <span style="float:none">
+                    <button type="button" style="background-color:#9cede3;
+                    border: none;
+                    color: black;
+                    padding: 10px 20px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    margin: 4px 2px;
+                    cursor: pointer;
+                    border-radius: 16px;"><a style="color: black"
+                href="http://hospitals.aku.edu/nairobi/Departments/Pages/emergency.aspx" target="_blank">Aga Khan</a></button>
+
+        <button type="button" style="background-color:#9cede3;
+                 border: none;
+                 color: black;
+                 padding: 10px 20px;
+                 text-align: center;
+                 text-decoration: none;
+                 display: inline-block;
+                 margin: 4px 2px;
+                 cursor: pointer;
+                 border-radius: 16px;"><a style="color: black"
+                href="https://mpshahhosp.org/casualty-ae/" target="_blank">M.P Shah</a></button>
+
+        <button type="button" style="background-color:#9cede3;
+              border: none;
+              color: black;
+              padding: 10px 20px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              margin: 4px 2px;
+              cursor: pointer;
+              border-radius: 16px;"><a  style="color: black" href="https://nwh.co.ke/hospital/departments/casualty/" target="_blank">Nairobi womens</a></button>
+
+        <button type="button" style="background-color:#9cede3;
+                    border: none;
+                    color: black;
+                    padding: 10px 20px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    margin: 4px 2px;
+                    cursor: pointer;
+                    border-radius: 16px;"><a style="color: black"
+                href="https://www.gerties.org/services/accident-emergency/" target="_blank">Gertrudes hospital</a></button>
+
+            </span>
+            <br>
+            <br>
+            <br>
+            
+            <div class="row">
+                <div class="col-md-3">
+                    <li>AAR Emergency Ambulance in Kenya:  2717374</li>
+
+                    <li> Avenue Rescue Services in Kenya:  3743858</li>
+
+                    <li> Kenya Red Cross Society Ambulance in Kenya: (020)3950000</li>
+                </div>
+                <div class="col-md-3">
+                    <li> Emergency Plus Medical Services in Kenya: 070039539</li>
+
+                    <li> Phoenix Aviation Limited Ambulance Service in Kenya: 6005837</li>
+
+                    <li>Intensive Care Air Ambulance Limited in Kenya: 6004945</li>
+                </div>
+
+                <div class="col-md-3">
+                    <li>Road Safety Network Ambulance Service in Kenya: 2212699</li>
+
+                    <li>St John Ambulance in Kenya: 2210000</li>
+
+                    <li> Ambulance in Kenya: 112/999</li>
+
+                    <li>AMREF Flying Doctors Ambulance Service in Kenya: 315454/5 </li>
+                </div>
+                <div class="col-md-3">
+                    <img src="data:image/jpeg;base64,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" alt="">
+                </div>
+
+            </div>
+
+          
 
 
-        <li> Avenue Rescue Services in Kenya - 3743858</li>
 
-        <li> Kenya Red Cross Society Ambulance in Kenya - (020)3950000</li>
 
-        <li> Emergency Plus Medical Services in Kenya - 070039539</li>
 
-        <li> Phoenix Aviation Limited Ambulance Service in Kenya -6005837</li>
 
-        <li>Intensive Care Air Ambulance Limited in Kenya - 6004945</li>
-
-        <li>Road Safety Network Ambulance Service in Kenya -2212699</li>
-
-        <li>St John Ambulance in Kenya -2210000</li>
-
-        <li> Ambulance in Kenya - 112/999</li>
-
-        <li>AMREF Flying Doctors Ambulance Service in Kenya -315454/5 </li>
-    </ul>
+        </ul>
+        {% endblock %}
+    </div>
 
 </body>
 

@@ -1,13 +1,39 @@
 from django.shortcuts import render,redirect
+from .permissions import IsAdminOrReadOnly
 from .models import Posts, Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from .forms import NewPostForm
+from django.utils.safestring import mark_safe
+import json
+
+# @login_required(login_url='/accounts/login/')
+def home(request):
+
+    posts=Posts.objects.all()
+    context = {
+        "posts":posts,
+    }
+
+    return render(request,'home.html',context)
+from rest_framework.response import Response
+from .serializer import PostSerializer,ProfileSerializer
+from rest_framework.views import APIView
+from rest_framework import status
+
 def posts(request):
     posts = Posts.objects.all()
     return render(request,'home.html',{"posts":posts})
 
+# @login_required(login_url = '/accounts/login/')
+def single_post(request,id):
+    posts = Posts.objects.get(id=id)
+    return render(request,'singlepost.html',{"posts":posts})
+
+   
+
     
-@login_required(login_url = '/accounts/login/')
+# @login_required(login_url = '/accounts/login/')
 def profile(request,username):
     profile = User.objects.get(username=username)
     try:
@@ -25,7 +51,7 @@ def profile(request,username):
 
     return render(request, 'profile.html',context)
 
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user = request.user
     if request.method == 'POST':
@@ -34,7 +60,7 @@ def new_post(request):
             posts = form.save(commit=False)
             posts.profile = current_user
             posts.save()
-        return redirect('posts')
+        return redirect('home')
     else:
         form = NewPostForm()
     return render(request,'new_post.html',{"form":form})
@@ -46,7 +72,7 @@ def about(request):
     return render(request,'about.html')
 
 
-@login_required(login_url = '/accounts/login/')
+# @login_required(login_url = '/accounts/login/')
 def update_profile(request,username):
     profile = User.objects.get(username = username)
     return render(request,'updateprofile.html',{"profile":profile})
@@ -91,9 +117,105 @@ def fourteentosixteen(request,tag):
     fourteentosixteen = Posts.objects.get(tag='14-16')
     posts = Posts.get_fourteentosixteen_posts(tag)
     return render(request, '14_16.html',{"fourteentosixteen":fourteentosixteen},{"posts":posts})
+
+# def chat(request):
+#     return render(request, 'chat.html', {})
+
+
+# def room(request, room_name):
+    
+#     return render(request, 'room.html', {
+#         'room_name_json': mark_safe(json.dumps(room_name))
+#     })
     
 
-    
+class PostList(APIView):
+    def get(self,request, format=None):
+        all_posts = Posts.objects.all()
+        serializers =PostSerializer(all_posts,many=True)
+        return Response(serializers.data)
 
-    
-    
+    def post(self,request, format=None):
+        serializers = PostSerializer(data = request.data)
+
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    permission_classes = (IsAdminOrReadOnly,)
+
+
+class ProfileList(APIView):
+    def get(self,request,format=None):
+        all_profiles = Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles,many=True)
+        return Response(serializers.data)
+
+    def post(self,request, format=None):
+        serializers = ProfileSerializer(data = request.data)
+
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    permission_classes = (IsAdminOrReadOnly,)
+
+
+class PostDescription(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get_post(self,pk):
+        try:
+            return Posts.objects.get(pk=pk)
+        except Posts.DoesNotExist:
+            return Http404
+    def get(self,request,pk,format = None):
+        post = self.get_post(pk)
+        serializers = PostSerializer(post)
+        return Response(serializers.data)
+
+    def put(self,request,pk,format = None):
+        post = self.get_post(pk)
+        serializers = PostSerializer(post, request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data)
+        else:
+            return Response(serializers.errors, status = status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        post = self.get_post(pk)
+        post.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class ProfileDescription(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get_profile(self,pk):
+        try:
+            return Profile.objects.get(pk=pk)
+        except Profile.DoesNotExist:
+            return Http404
+
+    def get(self,request,pk,format = None):
+        profile = self.get_profile(pk)
+        serializers = ProfileSerializer(profile)
+        return Response(serializers.data)
+
+    def put(self,request,pk,format = None):
+        profile = self.get_profile(pk)
+        serializers = ProfileSerializer(profile,request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data)
+        else:
+            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def delete(self, request, pk, format=None):
+        profile = self.get_profile(pk)
+        profile.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+

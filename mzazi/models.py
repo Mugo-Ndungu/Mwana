@@ -15,8 +15,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,null=True)
     username = models.CharField(max_length=50)
     email = models.EmailField(blank=True)
-    picture = models.ImageField(upload_to = 'profiles/', default = 'default.png' )
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    picture = models.ImageField(upload_to = 'profiles/', default = 'default.jpeg' )
     bio = models.CharField(max_length = 200, blank = True)
     
 
@@ -50,7 +49,7 @@ class Posts(models.Model):
     image=models.ImageField(upload_to = 'posts/', default = 'article.png')
     title = models.CharField(max_length=200)
     content = models.TextField()
-    published = models.DateTimeField()
+    published = models.DateTimeField(auto_now_add=True)
     tag = models.ManyToManyField(tag,blank=True)
 
 
@@ -61,3 +60,6 @@ class Posts(models.Model):
     def get_profile_posts(cls,profile):
         posts = Posts.objects.filter(profile__pk=profile)
         return posts
+
+    def __str__(self):
+        return self.title
