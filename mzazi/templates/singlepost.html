@@ -5,50 +5,50 @@
 <hr style=" border-top: 10px dotted  #9cede3; margin-left: 10px; margin-top: 15px;">
 
 <br>
-<br>
-<br>
+
 
 <div class="container">
        <div class="row">
-              <div class="col-md-6">
+              
                      <!-- Card -->
 
                      <!-- Card image -->
-                     <img class="card-img-top" src="{{posts.image.url}}" alt="Card image cap" height="200px"
+                     
+                            <img class="card-img-top" src="{{posts.image.url}}" alt="Card image cap" height="200px"
                             style=" margin-left: 5px; border-radius:50%; float: left; width:200px; border: 5px solid #dd7373">
-                     <br>
-                     <!-- Card content -->
-                     <br>
-                     <br>
+                  
 
+                    <p class=""> <span class="card-title text-center" style="text-align:right; font-family: 'Mali', cursive;
+                     font-size: 300%; color: #dd7373; ">{{posts.title}}</span>
+                  </p> 
+                  <p class="" style="margin-top:70px;margin-left:-300px;">By: <a class=""
+                     href="{%url 'profile' username=posts.profile.username %}">{{posts.profile.username}}</a>
+              {{posts.published | date:"F d,Y"}}</p>
+                    
+                    
+                             
+                            
+              
+                     <!-- <div class="pull-right clearfix" style="font-family: 'Nunito', sans-serif; font-size:15px;margin-top:60px;">  </div> -->
 
-                     <span class="card-title text-center" style="text-align:right; font-family: 'Mali', cursive;
-                             font-size: 300%; ">{{posts.title}}</span>
-                     <p class="" style="font-family: 'Nunito', sans-serif; font-size:15px;">By: <a class=""
-                                   href="{%url 'profile' username=posts.profile.username %}">{{posts.profile.username}}</a>
-                            {{posts.published | date:"F d,Y"}}</p>
-
-                     <p class="" style="font-family: 'Cookie', cursive; font-size:15px;"></p> <br>
+                      <br>
 
 
                      <!-- <ul>
                                     <p class="pull-left">{{posts.tag}}</p> <br>
                              </ul>
                               -->
+                              <br>
+                              <br>
+                              <br>
+                              <div>
+                                   <p class="card-text" style="font-family: 'Nunito', sans-serif;">{{posts.content}}</p>
+                              </div>
+                  
 
-                     <p class="card-text" style="font-family: 'Nunito', sans-serif;">{{posts.content}}</p>
-
-                     <!-- Title -->
-
-
-
-              </div>
-
-
-
-
-              <!-- Card -->
-
+<br>
+<br>
+<br>
 
               <div class="col-md-6" style="border:4px dotted coral; padding-bottom: 15px;">
                      <ul style="padding-top: 20px">
