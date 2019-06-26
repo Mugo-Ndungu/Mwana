@@ -17,7 +17,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^chat/', include('mzazi.urls')),
-    url(r'^admin/', admin.site.urls),
-    
+    url(r'', include('mzazi.urls')),
+    url(r'^admin/', admin.site.urls),    
 ]
